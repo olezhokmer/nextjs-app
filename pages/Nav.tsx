@@ -16,16 +16,17 @@ function show(id:string){
     if(elem) elem.style.display='block';
 }
 function Nav(props:any){
+    let email: string | null = null;
     if (typeof window !== "undefined") {
-        props.email = localStorage.getItem('email');
+        email = localStorage.getItem('email');
     }
-    let profileBlock = !props.email ? (
+    let profileBlock = !email ? (
         <Link href="/login">
                     <a className="inline-block text-lg px-4 py-2 leading-none border rounded mt-4 lg:mt-0">Sign in</a>
         </Link>
     ) : (
         <div>
-            {props.email}
+            {email}
             <button className="inline-block text-lg px-4 py-2 ml-2 leading-none border rounded mt-4 lg:mt-0" onClick={logout}>
                     Log out
             </button>
